@@ -71,18 +71,19 @@ Additional audio hardware will be selected later when local playback is implemen
 
 ## Project Status
 
-**Current milestone: Milestone 0 — Project Foundation**
+**Milestone 0 — Project Foundation: Completed**
 
 Completed:
 
-* Created the GitHub repository
-* Created the local Git repository on Ubuntu
-* Connected the local repository to GitHub
-* Configured the main Git branch
-* Installed Git and CMake
-* Verified the native C++ development tools
+- Created the GitHub repository
+- Created and configured the local Git repository on Ubuntu
+- Connected the local repository to GitHub
+- Installed and verified Git, CMake, Make and GCC/G++
+- Created the initial C++ application structure
+- Added a CMake-based build system
+- Successfully built and ran the application natively on Ubuntu
 
-Next:
+**Next: Milestone 1 — Boot Chain Ownership**
 
 * Create the initial CMake-based C++ project
 * Verify native compilation on Ubuntu
