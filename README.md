@@ -71,19 +71,20 @@ Additional audio hardware will be selected later when local playback is implemen
 
 ## Project Status
 
-**Milestone 0 — Project Foundation: Completed**
+**Milestone 1 — Boot Chain Ownership: Completed**
 
 Completed:
 
-- Created the GitHub repository
-- Created and configured the local Git repository on Ubuntu
-- Connected the local repository to GitHub
-- Installed and verified Git, CMake, Make and GCC/G++
-- Created the initial C++ application structure
-- Added a CMake-based build system
-- Successfully built and ran the application natively on Ubuntu
+- Verified the BBB boot flow through the serial console
+- Compared the default eMMC boot with microSD boot
+- Booted SPL/MLO and U-Boot from microSD
+- Identified the microSD and eMMC devices and their partitions from U-Boot
+- Inspected the microSD boot partition containing MLO and u-boot.img
+- Identified the Debian RootFS on the eMMC
+- Located the Linux kernel, initrd, uEnv.txt and Device Tree files on the eMMC
+- Connected the boot stages to the actual files and storage devices used by the system
 
-**Next: Milestone 1 — Boot Chain Ownership**
+**Next: Milestone 2 — Full Linux Boot from microSD**
 
 * Create the initial CMake-based C++ project
 * Verify native compilation on Ubuntu
