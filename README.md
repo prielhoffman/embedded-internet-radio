@@ -71,24 +71,22 @@ Additional audio hardware will be selected later when local playback is implemen
 
 ## Project Status
 
-**Milestone 2 — Full Linux Boot from microSD: Completed**
+**Milestone 3 — U-Boot Control: Completed**
 
 Completed:
 
-- Prepared a microSD card with a dedicated FAT32 boot partition and ext4 RootFS partition
-- Populated the boot partition with MLO/SPL, U-Boot, Linux kernel, Device Tree and uEnv.txt
-- Extracted an Angstrom Linux RootFS to the RootFS partition with the correct directory structure
-- Configured U-Boot to load the kernel and Device Tree from microSD and pass the RootFS location to the kernel
-- Successfully completed the full boot chain from microSD:
-  SPL → U-Boot → Linux Kernel → RootFS → Linux login
-- Verified that the running Linux system uses `/dev/mmcblk0p2` on the microSD as its RootFS
-- Diagnosed filesystem corruption on the original microSD card and replaced the faulty storage media
+- Interrupted the automatic boot process and worked directly from the U-Boot command line
+- Inspected the active U-Boot version, MMC devices and boot environment
+- Identified how U-Boot selects the appropriate Device Tree for the BeagleBone Black
+- Manually selected the microSD card as the boot storage device
+- Loaded the Linux kernel and Device Tree from microSD into RAM
+- Manually configured kernel boot arguments, including serial console and RootFS location
+- Booted the Linux kernel manually using U-Boot
+- Verified from Linux that the kernel received the boot arguments configured in U-Boot
 
-This milestone used pre-built boot and Linux artifacts in order to understand and validate the complete boot flow and storage layout. Later milestones will build and customize U-Boot, the Linux kernel, Device Tree and RootFS from source.
+This milestone demonstrated direct control over the U-Boot-to-Linux handoff rather than relying only on the automatic boot sequence.
 
-**Next: Milestone 3 — U-Boot Control**
-
-The next stage will focus on understanding and controlling U-Boot configuration, environment variables, boot commands and the handoff to the Linux kernel.
+**Next: Milestone 4 — Custom Linux Kernel**
 
 ## Roadmap
 
