@@ -71,22 +71,25 @@ Additional audio hardware will be selected later when local playback is implemen
 
 ## Project Status
 
-**Milestone 3 — U-Boot Control: Completed**
+**Milestone 4 — Custom Linux Kernel: Completed**
 
 Completed:
 
-- Interrupted the automatic boot process and worked directly from the U-Boot command line
-- Inspected the active U-Boot version, MMC devices and boot environment
-- Identified how U-Boot selects the appropriate Device Tree for the BeagleBone Black
-- Manually selected the microSD card as the boot storage device
-- Loaded the Linux kernel and Device Tree from microSD into RAM
-- Manually configured kernel boot arguments, including serial console and RootFS location
-- Booted the Linux kernel manually using U-Boot
-- Verified from Linux that the kernel received the boot arguments configured in U-Boot
+- Downloaded the Linux kernel source and prepared it for the BeagleBone Black platform
+- Used the `omap2plus_defconfig` baseline with AM33xx support for the BBB
+- Added the custom kernel release suffix `-priel-radio`
+- Cross-compiled the Linux kernel on Ubuntu x86 for the ARM architecture
+- Identified and resolved a kernel/toolchain compatibility issue by moving from Linux 5.10.168 to Linux 5.10.217
+- Built the ARM kernel image and generated a U-Boot-compatible `uImage`
+- Compiled the BeagleBone Black Device Tree from the Linux source tree
+- Backed up the existing working kernel and Device Tree on the microSD
+- Deployed the newly built kernel and Device Tree to the microSD boot partition
+- Successfully booted the BeagleBone Black using the custom-built kernel
+- Verified the running kernel with `uname -r`, which returned `5.10.217-priel-radio`
 
-This milestone demonstrated direct control over the U-Boot-to-Linux handoff rather than relying only on the automatic boot sequence.
+This milestone demonstrated the complete flow from Linux kernel source code, through ARM cross-compilation and deployment, to running the resulting kernel on the actual BeagleBone Black hardware.
 
-**Next: Milestone 4 — Custom Linux Kernel**
+**Next: Milestone 5 — Device Tree + RTC**
 
 ## Roadmap
 
