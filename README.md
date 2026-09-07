@@ -71,24 +71,24 @@ Additional audio hardware will be selected later when local playback is implemen
 
 ## Project Status
 
-**Milestone 1 — Boot Chain Ownership: Completed**
+**Milestone 2 — Full Linux Boot from microSD: Completed**
 
 Completed:
 
-- Verified the BBB boot flow through the serial console
-- Compared the default eMMC boot with microSD boot
-- Booted SPL/MLO and U-Boot from microSD
-- Identified the microSD and eMMC devices and their partitions from U-Boot
-- Inspected the microSD boot partition containing MLO and u-boot.img
-- Identified the Debian RootFS on the eMMC
-- Located the Linux kernel, initrd, uEnv.txt and Device Tree files on the eMMC
-- Connected the boot stages to the actual files and storage devices used by the system
+- Prepared a microSD card with a dedicated FAT32 boot partition and ext4 RootFS partition
+- Populated the boot partition with MLO/SPL, U-Boot, Linux kernel, Device Tree and uEnv.txt
+- Extracted an Angstrom Linux RootFS to the RootFS partition with the correct directory structure
+- Configured U-Boot to load the kernel and Device Tree from microSD and pass the RootFS location to the kernel
+- Successfully completed the full boot chain from microSD:
+  SPL → U-Boot → Linux Kernel → RootFS → Linux login
+- Verified that the running Linux system uses `/dev/mmcblk0p2` on the microSD as its RootFS
+- Diagnosed filesystem corruption on the original microSD card and replaced the faulty storage media
 
-**Next: Milestone 2 — Full Linux Boot from microSD**
+This milestone used pre-built boot and Linux artifacts in order to understand and validate the complete boot flow and storage layout. Later milestones will build and customize U-Boot, the Linux kernel, Device Tree and RootFS from source.
 
-* Create the initial CMake-based C++ project
-* Verify native compilation on Ubuntu
-* Commit and push the initial project structure
+**Next: Milestone 3 — U-Boot Control**
+
+The next stage will focus on understanding and controlling U-Boot configuration, environment variables, boot commands and the handoff to the Linux kernel.
 
 ## Roadmap
 
