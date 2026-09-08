@@ -71,25 +71,25 @@ Additional audio hardware will be selected later when local playback is implemen
 
 ## Project Status
 
-**Milestone 4 — Custom Linux Kernel: Completed**
+**Milestone 5 — Device Tree + RTC Integration: Completed**
 
 Completed:
 
-- Downloaded the Linux kernel source and prepared it for the BeagleBone Black platform
-- Used the `omap2plus_defconfig` baseline with AM33xx support for the BBB
-- Added the custom kernel release suffix `-priel-radio`
-- Cross-compiled the Linux kernel on Ubuntu x86 for the ARM architecture
-- Identified and resolved a kernel/toolchain compatibility issue by moving from Linux 5.10.168 to Linux 5.10.217
-- Built the ARM kernel image and generated a U-Boot-compatible `uImage`
-- Compiled the BeagleBone Black Device Tree from the Linux source tree
-- Backed up the existing working kernel and Device Tree on the microSD
-- Deployed the newly built kernel and Device Tree to the microSD boot partition
-- Successfully booted the BeagleBone Black using the custom-built kernel
-- Verified the running kernel with `uname -r`, which returned `5.10.217-priel-radio`
+- Connected a DS3231 RTC to the BeagleBone Black through I2C2
+- Verified that the device was reachable at I2C address `0x68`
+- Added the DS3231 to the BeagleBone Black Device Tree
+- Enabled RTC support and the DS3231-compatible `rtc-ds1307` driver in the custom Linux kernel
+- Rebuilt the custom kernel and Device Tree
+- Deployed the updated `uImage` and `am335x-boneblack.dtb` to the microSD boot partition
+- Successfully booted the BeagleBone Black with the updated kernel and Device Tree
+- Verified that Linux created `/dev/rtc0`
+- Confirmed that the RTC was detected as `rtc-ds1307 2-0068`
+- Read the hardware clock successfully using `hwclock`
+- Verified that the RTC continued keeping time while the BeagleBone Black was powered off
 
-This milestone demonstrated the complete flow from Linux kernel source code, through ARM cross-compilation and deployment, to running the resulting kernel on the actual BeagleBone Black hardware.
+This milestone demonstrated the complete integration flow of an external hardware peripheral, from physical I2C connection and Device Tree description to kernel driver support and a usable Linux device.
 
-**Next: Milestone 5 — Device Tree + RTC**
+**Next: Milestone 6 — BusyBox Minimal RootFS**
 
 ## Roadmap
 
