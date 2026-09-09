@@ -71,25 +71,25 @@ Additional audio hardware will be selected later when local playback is implemen
 
 ## Project Status
 
-**Milestone 5 — Device Tree + RTC Integration: Completed**
+**Milestone 7 — Buildroot Product Image: Completed**
 
 Completed:
 
-- Connected a DS3231 RTC to the BeagleBone Black through I2C2
-- Verified that the device was reachable at I2C address `0x68`
-- Added the DS3231 to the BeagleBone Black Device Tree
-- Enabled RTC support and the DS3231-compatible `rtc-ds1307` driver in the custom Linux kernel
-- Rebuilt the custom kernel and Device Tree
-- Deployed the updated `uImage` and `am335x-boneblack.dtb` to the microSD boot partition
-- Successfully booted the BeagleBone Black with the updated kernel and Device Tree
-- Verified that Linux created `/dev/rtc0`
-- Confirmed that the RTC was detected as `rtc-ds1307 2-0068`
-- Read the hardware clock successfully using `hwclock`
-- Verified that the RTC continued keeping time while the BeagleBone Black was powered off
+- Loaded the BeagleBone Buildroot configuration using `beaglebone_defconfig`
+- Customized the system hostname to `priel-radio`
+- Built a complete Embedded Linux system using Buildroot 2026.08
+- Generated U-Boot, Linux Kernel, Device Trees, BusyBox and RootFS automatically
+- Resolved a build failure caused by insufficient Ubuntu VM disk space by expanding the virtual disk from 25 GB to 50 GB
+- Generated a complete `sdcard.img` containing the boot and RootFS partitions
+- Wrote the generated image directly to the microSD card using `dd`
+- Successfully booted the BeagleBone Black from the Buildroot image
+- Verified the system hostname as `priel-radio`
+- Verified the running Linux kernel version as `6.18.38`
+- Confirmed the running system as `Buildroot 2026.08`
 
-This milestone demonstrated the complete integration flow of an external hardware peripheral, from physical I2C connection and Device Tree description to kernel driver support and a usable Linux device.
+This milestone demonstrated how the previously manual Embedded Linux build and deployment process can be automated and reproduced using Buildroot. A complete bootable microSD image can now be generated and written to a new card without manually recreating partitions, boot files, kernel and RootFS.
 
-**Next: Milestone 6 — BusyBox Minimal RootFS**
+**Next: Milestone 8 — Buttons via Linux GPIO / Input Subsystem**
 
 ## Roadmap
 
